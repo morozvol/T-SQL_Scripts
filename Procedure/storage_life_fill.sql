@@ -32,7 +32,8 @@ BEGIN
   WHILE @@FETCH_STATUS = 0
   BEGIN
 
-    EXEC [dbo].[insert_data_for_one_day] @date_ñ , @SalesYTD = @SalesYTDForSalesPerson OUTPUT
+    EXEC [dbo].[insert_data_for_one_day] @date_ñ
+
     FETCH NEXT FROM @cursor INTO @date_ñ
 
   END

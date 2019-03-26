@@ -2,8 +2,8 @@ EXEC create_procedure_if_is_not_created 'dim_date_fill'
 GO
 -- dim_date заполнение данными
 ALTER PROCEDURE [dbo].[dim_date_fill]
-    @date_from    DATE = '2017-01-01',
-    @date_to      DATE = '2019-12-31'
+    @date_from    DATE,
+    @date_to      DATE
 AS
 BEGIN
   BEGIN TRANSACTION
@@ -38,9 +38,9 @@ BEGIN
   COMMIT
 END
 
---EXEC [dbo].[dim_date_fill] 
+--EXEC [dbo].[dim_date_fill] '2018-01-01', '2019-12-01'
 --DELETE dim_date
 
 --DELETE storage_life
---EXEC [dbo].[storage_life_fell]
+--EXEC [dbo].[storage_life_fill]
 --SELECT *FROM [dbo].[storage_life] ORDER BY date_commit

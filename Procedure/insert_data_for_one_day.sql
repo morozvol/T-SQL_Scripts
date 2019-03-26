@@ -27,7 +27,7 @@ AS BEGIN
   FROM gen
   option (maxrecursion 10000)
 
-  INSERT INTO @res_table
+  INSERT INTO [dbo].storage_life
     SELECT
       date_commit   = @date,
       id_part       = ABS(CHECKSUM(NEWID()) % 10000), -- генерация рандомного числами  от 0 до (10000-1)

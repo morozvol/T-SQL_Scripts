@@ -1,5 +1,7 @@
+EXEC create_procedure_if_is_not_created 'storage_life_create'
+GO
 --создание таблици storage life
-ALTER PROCEDURE [dbo].[storage_life_create] 
+ALTER PROCEDURE [dbo].[storage_life_create]
 AS
 BEGIN
 
