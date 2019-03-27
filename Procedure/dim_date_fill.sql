@@ -38,9 +38,9 @@ BEGIN
   COMMIT
 END
 
---EXEC [dbo].[dim_date_fill] '2018-01-01', '2019-12-01'
+--EXEC [dbo].[dim_date_fill] 
 --DELETE dim_date
 
 --DELETE storage_life
---EXEC [dbo].[storage_life_fill]
+--EXEC [dbo].[storage_life_fell]
 --SELECT *FROM [dbo].[storage_life] ORDER BY date_commit
