@@ -6,20 +6,24 @@ ALTER PROCEDURE [dbo].[dim_date_fill]
     @date_to      DATE
 AS
 BEGIN
+
+  SET @date_from = DATEADD(DAY, DATEDIFF(DAY, 0, EOMONTH(@date_from, -1)), 1)
+  SET @date_to   = DATEADD(DAY, DATEDIFF(DAY, 0, EOMONTH(@date_to)), 1)
+
   BEGIN TRANSACTION
 
-    ;WITH date_dimension AS
-    (
-      SELECT
-        date_value = @date_from
+  ;WITH date_dimension AS
+  (
+    SELECT
+      date_value = @date_from
 
-      UNION ALL
+  UNION ALL
 
-      SELECT
-        date_value = DATEADD(DAY, 1 , date_value)
-      FROM date_dimension
-      WHERE DATEADD(DAY, 1 , date_value) <= @date_to
-    )
+    SELECT
+      date_value = DATEADD(DAY, 1 , date_value)
+    FROM date_dimension
+    WHERE DATEADD(DAY, 1 , date_value) < @date_to
+  )
     INSERT INTO dbo.dim_date
     (
       date_key, 
@@ -38,9 +42,6 @@ BEGIN
   COMMIT
 END
 
---EXEC [dbo].[dim_date_fill] 
---DELETE dim_date
-
---DELETE storage_life
---EXEC [dbo].[storage_life_fell]
---SELECT *FROM [dbo].[storage_life] ORDER BY date_commit
+--EXEC [dbo].[dim_date_fill] '2010-01-01', '2099-12-20'
+--TRUNCATE TABLE dim_date
+--SELECT *FROM [dbo].[dim_date]
