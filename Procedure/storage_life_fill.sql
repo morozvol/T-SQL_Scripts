@@ -1,5 +1,6 @@
 EXEC create_procedure_if_is_not_created 'storage_life_fill'
 GO
+
 -- заполняет storage_life данными входящими в диапазон таблиц dim_date на произвольное время (минимальная гранулярность - месяц)
 ALTER PROCEDURE [dbo].[storage_life_fill]
 (

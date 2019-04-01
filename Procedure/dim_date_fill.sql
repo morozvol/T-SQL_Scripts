@@ -2,11 +2,12 @@ EXEC create_procedure_if_is_not_created 'dim_date_fill'
 GO
 -- dim_date заполнение данными
 ALTER PROCEDURE [dbo].[dim_date_fill]
-    @date_from    DATE,
-    @date_to      DATE
-AS
+(
+  @date_from    DATE,
+  @date_to      DATE
+) AS
 BEGIN
-
+    --выравнивание даты
   SET @date_from = DATEADD(DAY, DATEDIFF(DAY, 0, EOMONTH(@date_from, -1)), 1)
   SET @date_to   = DATEADD(DAY, DATEDIFF(DAY, 0, EOMONTH(@date_to)), 1)
 

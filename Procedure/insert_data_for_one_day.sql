@@ -1,6 +1,7 @@
 EXEC create_procedure_if_is_not_created 'insert_data_for_one_day'
 GO
 
+ -- возвращает данные на один день
 ALTER PROCEDURE [dbo].[insert_data_for_one_day]
 (
   @date DATE
