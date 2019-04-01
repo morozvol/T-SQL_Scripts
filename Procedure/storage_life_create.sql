@@ -4,7 +4,6 @@ GO
 ALTER PROCEDURE [dbo].[storage_life_create]
 AS BEGIN
 
-  
   CREATE TABLE [dbo].[storage_life]
   (
     id              INT   NOT NULL IDENTITY(1,1),

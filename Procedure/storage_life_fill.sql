@@ -9,7 +9,7 @@ ALTER PROCEDURE [dbo].[storage_life_fill]
 BEGIN
 
   DECLARE
-    @date_ñ DATE,
+    @date_c DATE,
     @res_date_table_for_one_day DATE,
     @cursor CURSOR
 
@@ -28,15 +28,14 @@ BEGIN
     AND date_value <  @date_to
 
   OPEN @cursor
-  FETCH NEXT FROM @cursor INTO @date_ñ
+  FETCH NEXT FROM @cursor INTO @date_c
   WHILE @@FETCH_STATUS = 0
   BEGIN
 
-    EXEC [dbo].[insert_data_for_one_day] @date_ñ
-    FETCH NEXT FROM @cursor INTO @date_ñ
+    INSERT INTO storage_life EXEC [insert_data_for_one_day] @date_c
+    FETCH NEXT FROM @cursor INTO @date_c
 
   END
-
 END
 
 --SELECT * FROM [dbo].[storage_life]
