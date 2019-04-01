@@ -10,7 +10,7 @@ BEGIN
 
   SELECT
     date_commit   = @date,
-    id_part       = ABS(CHECKSUM(NEWID()) % 10000), -- генерация рандомного числами  от 0 до 10000
+    id_part       = ABS(CHECKSUM(NEWID()) % 10000), --генерация рандомного числами  от 0 до 10000
     id_guds_unit  = ABS(CHECKSUM(NEWID()) % 10000)
   FROM numbers
 
